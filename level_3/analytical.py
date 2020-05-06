@@ -32,14 +32,16 @@ def compute_3(jm, am, a0, s0, sg, debug=False) :
 		Q_m = A_m ** 2 / J_m
 
 		if float(abs(Q_d).subs(val)) <= float(Q_m.subs(val)) :
+			# CASE 2
 			# on a pas le temps d'atteindre l'accélération max
 			# time_for_acc = math.sqrt(abs(aire_target) / jm)
 			T_a = sympy.sqrt( abs(Q_d) / J_m )
 
-			bch = "A" + sign_var(s)
+			bch = "B" + sign_var(s)
 			cmd = [s, -s]
 			dur = [T_a, T_a]
 		else :
+			# CASE 1
 			# on atteind l'accélération maximale
 			# time_triangle = am / jm
 			T_t = A_m / J_m
@@ -48,7 +50,7 @@ def compute_3(jm, am, a0, s0, sg, debug=False) :
 			# time_rectangle = aire_restante_pour_rectangle / am
 			T_r = Q_r / A_m
 
-			bch = "B" + sign_var(s)
+			bch = "A" + sign_var(s)
 			cmd = [s, 0, -s]
 			dur = [T_t, T_r, T_t]
 	else :
