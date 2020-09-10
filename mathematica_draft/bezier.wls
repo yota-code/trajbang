@@ -27,3 +27,12 @@ pram = {
 a1sol = Solve[(s[0] /. pque) == r0 && r0 <= 1 && -1 <= r0 && 0 <= d && a1 <= Pi /2 && -Pi / 2 <= a1, a1, Reals]
 
 Print[a1sol]
+
+psol = {
+    a1 -> ArcSin[7*d*r0 / 6]
+}
+
+a2sol = Solve[(s'[0] /. pque /. psol) == 0, a2, Reals]
+
+Print[a2sol]
+
